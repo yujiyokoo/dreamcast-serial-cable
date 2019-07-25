@@ -1,0 +1,157 @@
+= Dreamcast Serial Cable Construction
+
+Written by Yuji Yokoo (@yujiyokoo on Twitter), May 2019
+
+== Purpose
+
+This document describes how I built my Dreamcast serial cable.
+
+=== Disclaimer
+
+This may not be correct, and may cause damage to your equipment.
+Even if it does, I cannot take responsibility for anything.
+However, I built my cable as described in this document and it worked _for me_.
+
+== Demo Video
+
+Please see: https://vimeo.com/336989348
+
+It took "94.99 seconds to transfer 967020 bytes".
+
+== Overview of Construction
+
+image::images/DCToSerial.jpg[align="center"]
+
+=== Information I gathered
+
+There is lots of useful information on the Internet.
+However, there were 2 web pages I really looked at for cable construction.
+They both contained useful information, but neither one seemed to be exactly what I needed.
+
+I based my design mostly on this, but this page seems to be primarily for modifying a DC-to-NeoGeoPocket cable.
+Also, it could just be me not reading it correctly, but I'm not sure if receive and send pins are connected correctly.
+http://mc.pp.se/dc/serifc.html
+
+I also looked at this page to try to figure out which pins should connect to which pins (Japanese).
+Note this page is *NOT* about cable construction.
+It shows how to build a DSUB-9 serial port on DC.
+This page shows MAX232, not MAX3222 but the receive pins and transmit pins have the same names, so it helped me.
+http://niga2.sytes.net/game/dcrip.html
+
+Also, this page in Japanese shows you pin numbers on the DC serial port (the photo near the bottom of the page):
+http://jj1odm.qp.land.to/dcserial_ft232bm.php
+
+The cable connects from Dreamcast's serial port (sorry about the poor picture, but I do not have a good camera or a macro lens):
+
+image::images/DCSerialPortPins.jpg[align="center"]
+
+with the connector:
+
+image::images/DCSerialCablePins.jpg[align="center"]
+
+To the serial communication board (main part of what I built):
+
+image::images/Board.jpg[align="center"]
+
+To the serial cable end:
+
+image::images/DCSerialCableDSUB9.jpg[align="center"]
+
+Which connects to a DSUB-9 serial port (in this case, a USB-to-serial cable):
+
+image::images/SerialCableMalePins.jpg[align="center"]
+
+== What you need:
+
+* 1 x Dreamcast serial connector. I sourced this by breaking up a Dreamcast SD-card reader, but it was very hard to use. It's supposed to be a lot easier with a DC-to-Neogeo Pocket cable.
+
+image::images/DCSerialConnector.jpg[align="center"]
+
+* 1 x universal circuit board, which looks like this:
+
+image::images/UniversalBoard.jpg[align="center"]
+
+* 1 x MAX3222, with through-hole, not surface-mount (In my case, I bought a MAX3222ECPN):
+  +
+  https://www.maximintegrated.com/en/products/interface/transceivers/MAX3222.html
+  +
+  If you use a universal board like I did, it's important to get a through-hole one, not a surface-mount.
+  +
+  The data sheet can be found here: https://datasheets.maximintegrated.com/en/ds/MAX3222E-MAX3246E.pdf
+
+image::images/MAX3222ECPN.jpg[align="center"]
+
+* 4 x 0.1uF (or 100nF, same thing) capacitor
+
+image::images/Capacitor100n.jpg[align="center"]
+
+* 1 x female DSUB-9 connector
+
+image::images/SerialConnectorFemale.jpg[align="center"]
+
+* 1 x DSUB-9 housing (note, this is slightly different from the one I used)
+
+image::images/DSUB9Housing.jpg[align="center"]
+
+* Some insulated wires
+  +
+  I used what I had at home, but they were a little thick, and should have bought some thinner wires.
+
+image::images/Wires.jpg[align="center"]
+
+=== For Power Supply
+
+Either:
+
+* 1 x 3.3V power supply
+* 1 x connector for such a power supply (or you could directly wire it)
+
+or (like I did)
+
+* 1 x 5V power supply
+
+image::images/PowerSupply.jpg[align="center"]
+
+* 1 x connector for such a power supply (or you could directly wire it).
+
+image::images/PowerConnector.jpg[align="center"]
+
+* 1 x 5V -> 3.3V 3-terminal regulator
+
+image::images/Regulator.jpg[align="center"]
+
+* 1x 0.1uF capacitor (yes, another one)
+
+image::images/Capacitor100n.jpg[align="center"]
+
+== Board Design
+
+The design was like this:
+
+image::images/DCSerial.png[align="center"]
+
+=== Optional 5V input
+
+If you choose to use a 5V power supply, you need to get 3.3V output from it.
+
+image::images/DCSerialCableRegulator.png[align="center"]
+
+== The Build
+
+This is a photo of my final build:
+
+image::images/SerialBoardAnnotated.jpg[align="center"]
+
+This is a photo of the back (soldering side) of the bard:
+
+image::images/BoardBack.jpg[align="center"]
+
+== Notes
+
+These SD-card adapters you can buy online don't seem to be built very well, especially if you want to brake them up and reuse the connector.
+I would not recommend it, but there is no other reliable source of connectors that I am aware of.
+
+Please be careful when you solder pins for both DC and DSUB9 serial ports.
+Please note the connector on the DC side goes in with pins facing *down*.
+Please be aware the side for soldering is flipped from the connector side for the DSUB9 serial port.
+
