@@ -5,7 +5,7 @@ Written by Yuji Yokoo (@yujiyokoo on Twitter), May 2019
 == Update 2023-11-21
 
 A lot has changed in this area since when I did this.
-Please take a look at the link:https://dreamcast.wiki/Coder's_cable[page on Coder's Cable] at Dreamcast Wiki.
+Please take a look at the link:https://dreamcast.wiki/Coder%27s_cable[page on Coder's Cable] at Dreamcast Wiki.
 There is information on updated components as well as commercially available cables.
 I am keeping this information as is, hoping it will still be useful to some people who build their own cable.
 
